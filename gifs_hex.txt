@@ -1,0 +1,26 @@
+1 by 1 red
+4749 4638 3761 0100 0100 8001 00ff 0000
+ffff ff2c 0000 0000 0100 0100 0002 0244
+0100 3b
+
+1 by 1 white
+4749 4638 3761 0100 0100 8001 00ff ffff
+0000 002c 0000 0000 0100 0100 0002 0244
+0100 3b
+
+2 by 1 white/white (for vertical stripe)
+4749 4638 3761 0200 0100 8001 00ff ffff
+0000 002c 0000 0000 0200 0100 0002 0204
+0a00 3b
+
+2 by 1 black/white (for vertical stripe)
+47 49 46 38 37 61 02 00 01 00 80 00 00 00 00 00 ff ff ff 2c 00 00 00 00 02 00 01 00 00 02 02 44 0a 00 3b
+
+the same in base64
+R0lGODdhAgABAIAAAAAAAP///ywAAAAAAgABAAACAkQKADs=
+
+1 by 2 black/white (for horizontal stripe)
+47 49 46 38 37 61 01 00 02 00 80 00 00 00 00 00 ff ff ff 2c 00 00 00 00 01 00 02 00 00 02 02 44 0a 00 3b
+
+the same in base64
+R0lGODdhAQACAIAAAAAAAP///ywAAAAAAQACAAACAkQKADs=
