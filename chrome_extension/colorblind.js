@@ -17,16 +17,10 @@ chrome.runtime.onMessage.addListener(
 
 function unBlindPage(message) {
   
-  // Iterate over all elements in page - 
-  // fastest is to reverse iterate with plain JS
+  // Quickly iterate over all elements
   // http://stackoverflow.com/questions/8747086
-  
-  // Option 1
+  // TODO: compare performance of document.all selector;
   var items = document.getElementsByTagName("*");
-  
-  // Option 2 
-  // TODO: compare performance
-  // var items = document.all;
 
   var itemsLength = items.length
   for (var i = itemsLength; i--;) {
@@ -37,7 +31,7 @@ function unBlindPage(message) {
 //=====================================
 
 function unBlindItem(item) {
-  // Get CSSStyleDeclaration object of item
+  // Get color from CSSStyleDeclaration of item
   var color = tinycolor(window.getComputedStyle(item).backgroundColor);
   // Get cylindrical representation of color from RGB (en.wikipedia.org/wiki/HSL_and_HSV)
   var colorHSV = color.toHsv();
@@ -53,21 +47,37 @@ function unBlindItem(item) {
 
 //=====================================
 
-function getPatternForColor(color) {
-  var originalColor = color.darken().toHexString().substr(1)
-  var accentedColor = color.brighten(40).saturate(50).toHexString().substr(1)
-  
-  // 2x1 image in black/white for vertical stripes
-  var verticalStripes = "47 49 46 38 37 61 02 00 01 00 80 00 00" + accentedColor + originalColor + "2c 00 00 00 00 02 00 01 00 00 02 02 44 0a 00 3b";
-  // 1x2 image in black/white for horizontal stripes
-  var horizontalStripes = "47 49 46 38 37 61 01 00 02 00 80 00 00" + accentedColor + originalColor + "2c 00 00 00 00 01 00 02 00 00 02 02 44 0a 00 3b";
+function getPatternForColor(original) {
+  var color = original.clone();
+  var _isred = false;
+  var _isgreen = false;
 
-  if (true) {
-    return "url(data:image/gif;base64," + hexToBase64(horizontalStripes) + ") repeat";
+  if ((_isred = isRed(original)) || (_isgreen = isGreen(original))) {
+    var darker = color.darken().toHexString().substr(1)
+    var lighter = color.brighten().saturate(50).toHexString().substr(1)
+    var pattern;
+    
+    if (_isred) {
+      // 1x2 image in black/white for horizontal stripes
+      pattern = "47 49 46 38 37 61 01 00 02 00 80 00 00" + lighter + darker + "2c 00 00 00 00 01 00 02 00 00 02 02 44 0a 00 3b";
+    } else {
+      // 2x1 image in black/white for vertical stripes
+      pattern = "47 49 46 38 37 61 02 00 01 00 80 00 00" + lighter + darker + "2c 00 00 00 00 02 00 01 00 00 02 02 44 0a 00 3b";
+    }
+    return "url(data:image/gif;base64," + hexToBase64(pattern) + ") repeat";
   } else {
-    return "url(data:image/gif;base64," + hexToBase64(verticalStripes) + ") repeat";
+    return original.toString();
   }
 };
+
+function isRed(color) {
+  return true
+}
+
+function isGreen(color) {
+  return false
+}
+
 
 //=== CONVERSION UTILS ====================================
 
