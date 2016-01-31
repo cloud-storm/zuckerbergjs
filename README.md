@@ -1,8 +1,12 @@
 # zuckerberg.js
 Utility to make the web and enterprise software accessible for color blind people
 
+# Features
+- Lightweight
+- Bootstrap compatible
+
 # Dependencies 
-TinyColor (https://github.com/bgrins/TinyColor)
+- TinyColor (https://github.com/bgrins/TinyColor)
 
 # Possible improvements
 - Extend patterns to cover blue & secondary colors to aid fully color blind users
