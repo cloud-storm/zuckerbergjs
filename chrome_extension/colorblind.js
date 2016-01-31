@@ -3,6 +3,9 @@
 // v0.1
 
 //===============================================
+window.colorPrefs = { blueTreshold:0.30 };
+
+//===============================================
 
 // Start execution on incoming message (sent by extension button)
 chrome.runtime.onMessage.addListener(
@@ -28,7 +31,6 @@ function unBlindPage(message) {
   }
 };
 
-//=====================================
 
 function unBlindItem(item) {
   // Get color from CSSStyleDeclaration of item
@@ -45,16 +47,16 @@ function unBlindItem(item) {
   }
 };
 
-//=====================================
+//===============================================
 
 function getPatternForColor(original) {
   var color = original.clone();
   var _isred = false;
   var _isgreen = false;
 
-  if ((_isred = isRed(original)) || (_isgreen = isGreen(original))) {
+  if ( ((_isred = isRed(original)) || (_isgreen = isGreen(original))) && !isBlue(original)) {
     var darker = color.darken().toHexString().substr(1)
-    var lighter = color.brighten().saturate(50).toHexString().substr(1)
+    var lighter = color.brighten(30).saturate(50).toHexString().substr(1)
     var pattern;
     
     if (_isred) {
@@ -71,13 +73,20 @@ function getPatternForColor(original) {
 };
 
 function isRed(color) {
-  return true
+  var rgb = color.toRgb();
+  return (rgb.r > rgb.g);
 }
 
 function isGreen(color) {
-  return false
+  var rgb = color.toRgb();
+  return (rgb.r < rgb.g);
 }
 
+function isBlue(color) {
+  var rgb = color.toRgb();
+  var bt = window.colorPrefs.blueTreshold;
+  return (rgb.r < rgb.b*0.8) && (rgb.g < rgb.b*0.8) && (rgb.b > bt*255)
+}
 
 //=== CONVERSION UTILS ====================================
 
