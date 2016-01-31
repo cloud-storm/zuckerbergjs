@@ -9,6 +9,7 @@ Utility to make the web and enterprise software accessible for color blind peopl
 - TinyColor (https://github.com/bgrins/TinyColor)
 
 # Possible improvements
+- Zoom pattern along with browser zoom
 - Extend patterns to cover blue & secondary colors to aid fully color blind users
 - Add pattern hints/legend
 - Cache relevant colours and only match in the iteration to increase speed
