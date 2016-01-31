@@ -19,6 +19,10 @@ Utility to make the web and enterprise software accessible for color blind peopl
 - Adjustable CSS Opacity (may need to switch from gif to png for this)
 - Experiment with svg patterns, like https://github.com/btmills/geopattern
 
+# Currently unsupported sites (check their coloring implementation)
+- http://koponyeg.hu
+- http://444.hu
+
 # Useful links
 - http://micheljansen.org/blog/entry/1238
 - https://github.com/SachaG/Patternify
