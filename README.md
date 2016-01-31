@@ -5,6 +5,8 @@ Utility to make the web and enterprise software accessible for color blind peopl
 TinyColor (https://github.com/bgrins/TinyColor)
 
 # Possible improvements
+- Extend patterns to cover blue & secondary colors to aid fully color blind users
+- Add pattern hints/legend
 - Cache relevant colours and only match in the iteration to increase speed
 - Support background color in :after and ::before pseudo-elements
 - Support font color
