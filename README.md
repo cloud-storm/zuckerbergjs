@@ -12,12 +12,13 @@ Utility to make the web and enterprise software accessible for color blind peopl
 
 ## Possible improvements
 - Zoom pattern along with browser zoom
+- Support background color in :after and ::before pseudo-elements
+- Support faked backgrounds by wide borders
+- Support font color
 - Handle gradients (based on sampling)
 - Extend patterns to cover blue & secondary colors to aid fully color blind users
 - Add pattern hints/legend
 - Cache relevant colours and only match in the iteration to increase speed
-- Support background color in :after and ::before pseudo-elements
-- Support font color
 - Adjustable CSS Opacity (may need to switch from gif to png for this)
 - Experiment with svg patterns, like https://github.com/btmills/geopattern
 
