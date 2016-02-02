@@ -3,20 +3,49 @@
 // v0.1
 
 //===============================================
-window.colorPrefs = { blueTreshold:0.30 };
+window.cBExtParams = { 
+  onIcon: "icon_on.png",
+  offIcon: "icon_off.png",
+  isUnblinding: false
+};
 
+window.zBParams = { blueTreshold: 0.30 } 
+
+// Extension specific stuff starts here
 //===============================================
 
 // Start execution on incoming message (sent by extension button)
 chrome.runtime.onMessage.addListener(
   function(request, sender, sendResponse) {
     if( request.message === "un_blind_page" ) {
-      unBlindPage();
+      handleExtensionClick()
     }
   }
 );
 
 //===============================================
+
+function handleExtensionClick() {
+  updateIcon();
+  unBlindPage();
+}
+
+//===============================================
+
+function updateIcon() {
+  window.isUnblinding = !window.isUnblinding;
+  var iconPath = cBExtParams.offIcon;
+  if (window.isUnblinding) { iconPath = cBExtParams.onIcon; }
+  // send message to background script
+  chrome.runtime.sendMessage({ "newIconPath" : iconPath });
+
+  // Reload page but don't force download assets
+  if (!window.isUnblinding) {  window.location.reload(false); }
+}
+
+// Extension-specific stuff over
+//===============================================
+// To be refactored into zuckerberg.js from here
 
 function unBlindPage(message) {
   
@@ -84,7 +113,7 @@ function isGreen(color) {
 
 function isBlue(color) {
   var rgb = color.toRgb();
-  var bt = window.colorPrefs.blueTreshold;
+  var bt = window.zBParams.blueTreshold;
   return (rgb.r < rgb.b*0.8) && (rgb.g < rgb.b*0.8) && (rgb.b > bt*255)
 }
 
