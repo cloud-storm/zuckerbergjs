@@ -11,10 +11,11 @@ Utility to make the web and enterprise software accessible for color blind peopl
 - TinyColor (https://github.com/bgrins/TinyColor)
 
 ## Possible improvements
+- Support font color
 - Zoom pattern along with browser zoom
 - Support background color in :after and ::before pseudo-elements
 - Support faked backgrounds by wide borders
-- Support font color
+- Implement lightweight automatic watch for new elements/change of elements
 - Handle gradients (based on sampling)
 - Extend patterns to cover blue & secondary colors to aid fully color blind users
 - Add pattern hints/legend
