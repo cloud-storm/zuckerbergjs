@@ -4,6 +4,7 @@ Utility to make the web and enterprise software accessible for color blind peopl
 # Features
 - Lightweight
 - Bootstrap compatible
+- Highlights colorful backgrounds and text as well
 
 # Usage
 
@@ -11,7 +12,6 @@ Utility to make the web and enterprise software accessible for color blind peopl
 - TinyColor (https://github.com/bgrins/TinyColor)
 
 ## Possible improvements
-- Support font color
 - Zoom pattern along with browser zoom
 - Support background color in :after and ::before pseudo-elements
 - Support faked backgrounds by wide borders
