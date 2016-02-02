@@ -14,7 +14,7 @@
       "matches": [
         "<all_urls>"
       ],
-      "js": ["tinycolor_1_3_0_min.js", "colorblind.js"]
+      "js": ["tinycolor_1_3_0_min.js", "zuckerberg.js", "colorblind.js"]
     }
   ]
 }
