@@ -12,6 +12,7 @@ Utility to make the web and enterprise software accessible for color blind peopl
 - TinyColor (https://github.com/bgrins/TinyColor)
 
 ## Possible improvements
+- Permanent setting for auto-unblinding websites
 - Zoom pattern along with browser zoom
 - Support background color in :after and ::before pseudo-elements
 - Support faked backgrounds by wide borders
